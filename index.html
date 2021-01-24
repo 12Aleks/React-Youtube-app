@@ -3,8 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<div id="best"></div>
+<div id="app"> </div>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel" src="js.js"></script>
+<script type="text/babel">
+    const title = 'title';
+    const styleObject = {
+        color: 'red',
+        fontWeight: 900
+    }
+    const user = [{
+        name: 'Aleks',
+        age: 23,
+        id: 1,
+        fullInformation: function (){
+            return `${this.id}: ${this.name} - ${this.age}`
+        }
+    },{
+        name: 'Tom',
+        age: 23,
+        id: 1,
+        fullInformation: function (){
+            return `${this.id}: ${this.name} - ${this.age}`
+        }
+    }];
+    ReactDOM.render(
+        <div><h1 className="{title}">Hello React</h1>
+            <p>This is test project</p>
+            <p style={styleObject}>2 + 2 = {2+2}</p>
+            <p style={{color: 'pink'}}>{user[0].fullInformation()}</p>
+        </div>,
+        document.getElementById("app")
+    )
+</script>
 </body>
 </html>
