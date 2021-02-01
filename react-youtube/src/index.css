@@ -16,3 +16,10 @@ code {
   margin: 0 auto;
   width: 600px;
 }
+.rm{
+  background: red;
+  border-radius: 10%;
+  color: #fff;
+  border: none;
+
+}
