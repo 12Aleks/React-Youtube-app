@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoList from "./Todo/TodoList";
+import Context from "./context";
 
 const styles = {
     title: {
@@ -29,11 +30,17 @@ function App() {
         )
     }
 
+    function removeTodo(id) {
+      setTodos(todos.filter(todo => todo.id !== id))
+    }
+
     return (
+        <Context.Provider value={{removeTodo}}>
         <div className="wrapper">
             <h1 style={styles.title}>React tutorial</h1>
             <TodoList todos={todos} onCom={onComTodo}/>
         </div>
+        </Context.Provider>
     )
 }
 
