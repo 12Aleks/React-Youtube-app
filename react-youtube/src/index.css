@@ -27,3 +27,9 @@ code {
 .done{
   text-decoration: line-through;
 }
+.buttonStyle{
+  margin-left: 1rem;
+  border: 2px solid #ff002d;
+  color: white;
+  background: red;
+}
