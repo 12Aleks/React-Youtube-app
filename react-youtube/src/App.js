@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import TodoList from "./Todo/TodoList";
 import Context from "./context";
 import AddTodo from "./Todo/AddTodo";
+import Loader from "./Loader";
 
 const styles = {
     title: {
@@ -11,13 +12,19 @@ const styles = {
 }
 
 function App() {
-    const [todos, setTodos] = React.useState(
-        [
-            {id: 1, completed: false, title: 'Test fist'},
-            {id: 2, completed: false, title: 'Test second'},
-            {id: 3, completed: false, title: 'Test third'},
-        ]
-    )
+    const [todos, setTodos] = React.useState([]);
+    const [loading, setLoading] = React.useState(true)
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
+            .then(response => response.json())
+            .then(todos => {
+                setTimeout(() => {
+                    setTodos(todos)
+                    setLoading(false)
+                }, 2000)
+            })
+    }, [])
 
     function onComTodo(id) {
         console.log(id);
@@ -48,7 +55,11 @@ function App() {
             <div className="wrapper">
                 <h1 style={styles.title}>Task list:</h1>
                 <AddTodo onCreate={addTodo}/>
-                {todos.length ? <TodoList todos={todos} onCom={onComTodo}/> : <p>No todos!</p>}
+
+                {loading && <Loader/>}
+                {todos.length ? (<TodoList todos={todos} onCom={onComTodo}/>)
+                    : loading? null :( <p>No todos!</p>)
+                }
             </div>
         </Context.Provider>
     )
