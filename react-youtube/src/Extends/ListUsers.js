@@ -1,5 +1,7 @@
 import React from 'react'
 import User from "./User";
+import './Style.css'
+import AddUser from "./AddUser";
 
 
 export default class ListUsers extends React.Component{
@@ -17,16 +19,40 @@ export default class ListUsers extends React.Component{
             users: prevState.users.filter(user => user.id !== id )
         }));
     };
+
+    addedUsers = ({name, age}) => {
+        this.setState(prevState => ({
+            users: prevState.users.concat([
+                {
+                    id: (this.state.users.length + 1),
+                    name,
+                    age,
+                    status: false
+                }
+            ])
+        }))
+    };
+
     render() {
         return(
-            <ul>
-                {
-                    this.state.users.map(user => (
+            <div>
+                <AddUser addedUsers={this.addedUsers}/>
+                <table className="blockWrapper" >
+                    <thead>
+                    <tr>
+                        <td>Number</td>
+                        <td>Name</td>
+                        <td>Age</td>
+                        <td>Delete element</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    { this.state.users.map(user => (
                         <User user={user} key={user.id} deleteElement={this.deleteElement}/>
-                    ))
-                }
-            </ul>
-
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }

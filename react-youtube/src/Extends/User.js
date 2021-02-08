@@ -7,16 +7,30 @@ const style = {
     }
 }
 
- class User extends React.Component {
+class User extends React.Component {
     state = {
         name: 'Aleks'
     };
+
     render() {
-        return(
-          <li style={style.li}>
-              <span style={{marginRight: '1rem'}}>{this.props.user.id}.  {this.props.user.name}</span>
-              <button onClick={() => {this.props.deleteElement(this.props.user.id)}}>Delete</button>
-          </li>
+        return (
+            <tr style={style.li}>
+                <td>
+                    {this.props.user.id}
+                </td>
+                <td>
+                    {this.props.user.name}
+                </td>
+                <td>
+                    {this.props.user.age}
+                </td>
+                <td>
+                    <button onClick={() => {
+                        this.props.deleteElement(this.props.user.id)
+                    }}>Delete
+                    </button>
+                </td>
+            </tr>
         )
     }
 }
