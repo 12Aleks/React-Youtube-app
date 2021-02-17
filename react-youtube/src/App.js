@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import MainContext from "./ReactContext/MainContext";
+import React from 'react'
+import Index from "./ReactContext/IndexComponent";
 
 
 // const AddTodo = React.lazy(() => import('./Todo/AddTodo'))
@@ -67,7 +67,7 @@ function App() {
         {/*        }*/}
         {/*    </div>*/}
         {/*</Context.Provider>*/}
-           <MainContext/>
+          <Index/>
         </div>
     )
 }
