@@ -1,6 +1,7 @@
 import React from 'react'
-import Index from "./ReactContext/IndexComponent";
-import IndexEffect from "./Primery/useEffect/indexEffect";
+// import Index from "./ReactContext/IndexComponent";
+// import IndexEffect from "./Primery/useEffect/indexEffect";
+import Ref from "./Primery/useRef/IndexUseRef";
 
 
 // const AddTodo = React.lazy(() => import('./Todo/AddTodo'))
@@ -68,8 +69,9 @@ function App() {
         {/*        }*/}
         {/*    </div>*/}
         {/*</Context.Provider>*/}
-        <IndexEffect/>
-          <Index/>
+          <Ref/>
+          {/*<IndexEffect/>*/}
+          {/*<Index/>*/}
         </div>
     )
 }
