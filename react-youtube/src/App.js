@@ -1,7 +1,8 @@
 import React from 'react'
+import UseMemoFun from "./Primery/useMemo/useMemo";
 // import Index from "./ReactContext/IndexComponent";
 // import IndexEffect from "./Primery/useEffect/indexEffect";
-import Ref from "./Primery/useRef/IndexUseRef";
+// import Ref from "./Primery/useRef/IndexUseRef";
 
 
 // const AddTodo = React.lazy(() => import('./Todo/AddTodo'))
@@ -69,9 +70,10 @@ function App() {
         {/*        }*/}
         {/*    </div>*/}
         {/*</Context.Provider>*/}
-          <Ref/>
+        {/*  <Ref/>*/}
           {/*<IndexEffect/>*/}
           {/*<Index/>*/}
+          <UseMemoFun/>
         </div>
     )
 }
