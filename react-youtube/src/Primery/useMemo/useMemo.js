@@ -16,7 +16,7 @@ export default function UseMemoFun() {
 
 
     // const computed = complexCompute(number);
-    const styles = {color: colored ? 'green': 'black'}
+    //const styles = {color: colored ? 'green': 'black'}
     const computed = useMemo(() => {
         return complexCompute(number);
     }, [number]);
@@ -24,7 +24,7 @@ export default function UseMemoFun() {
     const styles = useMemo(() => ({
         color: colored ? 'green': 'black'
     }), [colored]);
-
+s
 
     useEffect(() =>{
         console.log('Styles')
