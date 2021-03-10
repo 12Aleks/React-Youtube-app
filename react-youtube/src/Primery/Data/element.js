@@ -44,6 +44,7 @@ export default function ElementComponent({ deleteElement }) {
           <p>Email: {el.email}</p>
         </div>
       )}
+      <hr />
       <Button variant={defaultButton} onClick={() => deleteElement(el.id)}>
         Delete{" "}
         {startData === "posts"
