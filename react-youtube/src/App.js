@@ -1,13 +1,7 @@
 import React from "react";
-import IndexComponent from "./Primery/Data";
-// import CostomHook from "./Primery/uaeCostom/useCostom";
-
-// import Index from "./ReactContext/IndexComponent";
-// import IndexEffect from "./Primery/useEffect/indexEffect";
-// import Ref from "./Primery/useRef/IndexUseRef";
+import Mains from "./Layout/mainLayout";
 
 // const AddTodo = React.lazy(() => import('./Todo/AddTodo'))
-
 // const styles = {
 //     title: {
 //         color: 'red',
@@ -73,8 +67,9 @@ function App() {
       {/*  <Ref/>*/}
       {/*<IndexEffect/>*/}
       {/*<Index/>*/}
-      <IndexComponent />
+      {/* <IndexComponent /> */}
       {/* <CostomHook /> */}
+      <Mains />
     </div>
   );
 }

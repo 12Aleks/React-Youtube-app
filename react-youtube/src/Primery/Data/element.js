@@ -45,6 +45,7 @@ export default function ElementComponent({ deleteElement }) {
         </div>
       )}
       <hr />
+      <hr/>
       <Button variant={defaultButton} onClick={() => deleteElement(el.id)}>
         Delete{" "}
         {startData === "posts"
