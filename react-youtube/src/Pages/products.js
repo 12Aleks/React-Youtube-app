@@ -9,13 +9,14 @@ export default function ProductsComponent() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setData(json));
-  });
+  }, []);
 
   return (
     <Container>
       <Row>
         <Col xl={12}>
           <h1>Products</h1>
+          <hr />
         </Col>
       </Row>
       <Row>

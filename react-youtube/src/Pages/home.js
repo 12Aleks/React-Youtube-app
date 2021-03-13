@@ -7,6 +7,7 @@ export default function HomeComponent() {
       <Row>
         <Col>
           <h1>Home</h1>
+          <hr />
         </Col>
       </Row>
     </Container>
