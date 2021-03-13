@@ -12,6 +12,7 @@ const cardStyle = {
     width: "auto",
     maxWidth: "100%",
   },
+
 };
 
 export default function CardComponent({ d }) {
@@ -34,8 +35,8 @@ export default function CardComponent({ d }) {
           />
         </div>
         <Card.Body>
-          <Card.Title>{d.title}</Card.Title>
-          <Card.Text maxLength="10">{d.description}</Card.Text>
+          <Card.Title>{d.title.substring(0, 20) + ' ...'}</Card.Title>
+          <Card.Text style={{ height: "100px" }}>{d.description.substring(0, 100) + ' ...'}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
