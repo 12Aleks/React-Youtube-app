@@ -36,13 +36,15 @@ export default function ProductsComponent() {
           <hr />
         </Col>
       </Row>
-      <Row >
-      {loading?
-          <Loading />: currentProducts.map((d, index) => {
+      <Row>
+      {loading? <Loading />:
+           currentProducts.map((d, index) => {
           return <CardComponent d={d} key={index} />;
-        })
-      }
-        <Pagination productPerPage={productPerPage} totalProducts={data.length} paginate={paginate}/>
+          })
+       }
+        <Col xl={12} className='d-flex align-content-center justify-content-center'>
+          {!loading && <Pagination productPerPage={productPerPage} totalProducts={data.length} paginate={paginate}/>  }
+        </Col>
       </Row>
       {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
     </Container>

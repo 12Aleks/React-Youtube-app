@@ -11,6 +11,25 @@ import {
 } from "react-router-dom";
 
 export default function Mains() {
+  const routes = [
+    {
+      path: "/",
+      exact: true,
+      sidebar:'Home',
+      main: 'Home'
+    },
+    {
+      path: "/products",
+      sidebar: 'Products',
+      main:'Products',
+    },
+    {
+      path: "/posts",
+      sidebar: 'Posts',
+        main: 'Posts',
+    }
+  ];
+
   return (
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -18,12 +37,12 @@ export default function Mains() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <NavLink exact className="nav-link" to="/">
-              Home
-            </NavLink>
-            <NavLink className="nav-link" to="/products">
-              Products
-            </NavLink>
+            {
+              routes.map((route, index) => {
+                    return <NavLink key={index} exact={route.exact} className="nav-link" to={route.path}>{route.main}</NavLink>
+                 })
+            }
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
