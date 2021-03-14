@@ -16,8 +16,8 @@ const cardStyle = {
 
 export default function CardComponent({ d }) {
   return (
-    <Col sm="6" md="4" xl="3">
-      <Card className="d-flex flex-column justify-content-between">
+    <Col sm="6" md="4" xl="4">
+      <Card className="d-flex flex-column justify-content-between mb-3">
         <div
           style={cardStyle.wrapper}
           className="d-flex flex-column justify-content-between"
@@ -31,8 +31,8 @@ export default function CardComponent({ d }) {
           />
         </div>
         <Card.Body>
-          <Card.Title>{d.title}</Card.Title>
-          <Card.Text maxLength="10">{d.description}</Card.Text>
+          <Card.Title>{d.title.substring(1, 10)}</Card.Title>
+          <Card.Text maxLength="10">{d.description.substring(1, 30)}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>

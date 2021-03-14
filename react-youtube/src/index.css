@@ -85,3 +85,8 @@ code {
   min-width: 0;
   width: 100%;
 }
+.spinner-border {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
