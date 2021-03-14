@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
-import CardComponent from "./card";
+import axios from "axios";
+import Loading from "./components/loading";
+import CardComponent from "./components/card";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function ProductsComponent() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage, setProductPerPage] = useState(10);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setData(json));
+    const fetchProducts = async () => {
+      setLoading(true);
+      const rez = await axios.get("https://fakestoreapi.com/products");
+      setData(rez.data);
+      setLoading(false);
+    };
+    fetchProducts();
+    // fetch("https://fakestoreapi.com/products")
+    //   .then((res) => res.json())
+    //   .then((json) => setData(json));
   }, []);
 
   return (
@@ -19,6 +31,7 @@ export default function ProductsComponent() {
           <hr />
         </Col>
       </Row>
+      <Loading/> 
       <Row>
         {data.map((d, index) => {
           return <CardComponent d={d} key={index} />;
@@ -26,5 +39,5 @@ export default function ProductsComponent() {
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </Row>
     </Container>
-  );
+  )
 }

@@ -12,16 +12,12 @@ const cardStyle = {
     width: "auto",
     maxWidth: "100%",
   },
-
 };
 
 export default function CardComponent({ d }) {
   return (
     <Col sm="6" md="4" xl="3">
-      <Card
-        style={{ width: "18rem" }}
-        className="d-flex flex-column justify-content-between"
-      >
+      <Card className="d-flex flex-column justify-content-between">
         <div
           style={cardStyle.wrapper}
           className="d-flex flex-column justify-content-between"
@@ -35,8 +31,8 @@ export default function CardComponent({ d }) {
           />
         </div>
         <Card.Body>
-          <Card.Title>{d.title.substring(0, 20) + ' ...'}</Card.Title>
-          <Card.Text style={{ height: "100px" }}>{d.description.substring(0, 100) + ' ...'}</Card.Text>
+          <Card.Title>{d.title}</Card.Title>
+          <Card.Text maxLength="10">{d.description}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>
