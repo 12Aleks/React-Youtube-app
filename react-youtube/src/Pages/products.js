@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./components/loading";
 import Pagination from "./components/pagination";
+import Selected from "./components/select";
 import CardComponent from "./components/card";
 import { Container, Row, Col } from "react-bootstrap";
+
 
 export default function ProductsComponent() {
   const [data, setData] = useState([]);
@@ -14,7 +16,12 @@ export default function ProductsComponent() {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const rez = await axios.get("https://fakestoreapi.com/products");
+      const rez = await axios.get("https://fakestoreapi.com/products", {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+    
       setData(rez.data);
       setLoading(false);
     };
@@ -25,8 +32,8 @@ export default function ProductsComponent() {
 
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-  const currentProducts  = data.slice(indexOfFirstProduct, indexOfLastProduct)
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const currentProducts = data.slice(indexOfFirstProduct, indexOfLastProduct);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Container>
@@ -37,16 +44,32 @@ export default function ProductsComponent() {
         </Col>
       </Row>
       <Row>
-      {loading? <Loading />:
-           currentProducts.map((d, index) => {
-          return <CardComponent d={d} key={index} />;
-          })
-       }
-        <Col xl={12} className='d-flex align-content-center justify-content-center'>
-          {!loading && <Pagination productPerPage={productPerPage} totalProducts={data.length} paginate={paginate}/>  }
+        <Col md='12'>
+          <Selected data={data}/>
         </Col>
       </Row>
-      {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
+      <Row>
+        {loading ? (
+          <Loading />
+        ) : (
+          currentProducts.map((d, index) => {
+            return <CardComponent d={d} key={index} />;
+          })
+        )}
+        <Col
+          xl={12}
+          className="d-flex align-content-center justify-content-center"
+        >
+          {!loading && (
+            <Pagination
+              productPerPage={productPerPage}
+              totalProducts={data.length}
+              paginate={paginate}
+            />
+          )}
+        </Col>
+      </Row>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </Container>
-  )
+  );
 }
