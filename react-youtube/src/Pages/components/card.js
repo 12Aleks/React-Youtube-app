@@ -24,7 +24,7 @@ export default function CardComponent({ d }) {
         >
           <Card.Img
             variant="top"
-            src={d.image}
+            src={d.url}
             fluid
             className="p-3 m-auto d-block"
             style={cardStyle.img}
@@ -32,7 +32,7 @@ export default function CardComponent({ d }) {
         </div>
         <Card.Body>
           <Card.Title>{d.title.substring(1, 10)}</Card.Title>
-          <Card.Text maxLength="10">{d.description.substring(1, 30)}</Card.Text>
+          <Card.Text maxLength="10">{d.title.substring(1, 30)}</Card.Text>
           <Button variant="primary">Go somewhere</Button>
         </Card.Body>
       </Card>

@@ -6,22 +6,18 @@ import Selected from "./components/select";
 import CardComponent from "./components/card";
 import { Container, Row, Col } from "react-bootstrap";
 
-
 export default function ProductsComponent() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productPerPage] = useState(9);
+  const [productPerPage] = useState(21);
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const rez = await axios.get("https://fakestoreapi.com/products", {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-    
+      const rez = await axios.get(
+        "https://jsonplaceholder.typicode.com/photos?_limit=80"
+      );
       setData(rez.data);
       setLoading(false);
     };
@@ -39,13 +35,13 @@ export default function ProductsComponent() {
     <Container>
       <Row>
         <Col xl={12}>
-          <h1>Products</h1>
+          <h1 className="mt-3">Products</h1>
           <hr />
         </Col>
       </Row>
       <Row>
-        <Col md='12'>
-          <Selected data={data}/>
+        <Col md="12">
+          <Selected data={data} />
         </Col>
       </Row>
       <Row>
@@ -69,7 +65,7 @@ export default function ProductsComponent() {
           )}
         </Col>
       </Row>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
     </Container>
   );
 }

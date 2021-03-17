@@ -1,30 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Selected({ data }) {
-  const [el, setEl] = useState([]);
-
-  //   const newData = () => {
-  //     let rez = Object.keys(data)
-  //       .map((key) => ({ ...data[key] }))
-  //       .reducer(
-  //         (newArr, d) => (
-  //           (newArr[d.category] = newArr[d.category] || []).push(d), newArr
-  //         ),
-  //         {}
-  //       );
-  //     setEl(rez);
-  //   };
+  const [newData, setNewData] = useState([]);
+  useEffect(() => {
+    let rez = data.reducer(
+      (arr, el) => ((arr[el.albumId] = arr[el.albumId] || []).push(el), arr),
+      {}
+    );
+    setNewData(rez);
+  }, [data]);
 
   return (
     <div>
-      <pre>{data}</pre>
-      <select>
-        {
-          // newData.map((d , index)=> {
-          //     return  <option key={index} value={d.category}>{d.category}</option>
-          // })
-        }
-      </select>
+      <pre>{JSON.stringify(newData, null, 2)}</pre>
+
+      {/* <select>
+        {data.map((d, index) => {
+          return (
+            <option key={index} value={d.albumId}>
+              {d.albumId}
+            </option>
+          );
+        })}
+      </select> */}
     </div>
   );
 }
