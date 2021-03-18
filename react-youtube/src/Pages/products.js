@@ -11,6 +11,8 @@ export default function ProductsComponent() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage] = useState(21);
+  const [newData, setNewData] = useState([]);
+  const [userSelected, setUserSelected] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,16 +21,30 @@ export default function ProductsComponent() {
         "https://jsonplaceholder.typicode.com/photos?_limit=80"
       );
       setData(rez.data);
+      setUserSelected(rez.data)
       setLoading(false);
     };
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    let rez = data.reduce(
+      (acc, n) => ((acc[n.albumId] = acc[n.albumId] || []).push(n), acc),
+      {}
+    );
+    setNewData(rez);
+  }, [data]);
+
+  function selectedData(value) {
+    console.log(value);
+    setUserSelected(value? newData[value]: data);
+  }
+
   //Get current products
 
   const indexOfLastProduct = currentPage * productPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productPerPage;
-  const currentProducts = data.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = userSelected.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -41,7 +57,7 @@ export default function ProductsComponent() {
       </Row>
       <Row>
         <Col md="12">
-          <Selected data={data} />
+          <Selected newData={newData} selectedData={selectedData} />
         </Col>
       </Row>
       <Row>
@@ -59,7 +75,7 @@ export default function ProductsComponent() {
           {!loading && (
             <Pagination
               productPerPage={productPerPage}
-              totalProducts={data.length}
+              totalProducts={userSelected.length}
               paginate={paginate}
             />
           )}
