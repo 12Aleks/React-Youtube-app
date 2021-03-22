@@ -2,6 +2,7 @@ import React from "react";
 import HomeComponent from "../Pages/home";
 import NotFoundComponent from "../Pages/notFound";
 import ProductsComponent from "../Pages/products";
+import ContactPage from "../Pages/contact"
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 import {
   BrowserRouter as Router,
@@ -27,6 +28,10 @@ export default function Mains() {
       path: "/posts",
       sidebar: 'Posts',
         main: 'Posts',
+    },{
+      path: '/contact',
+      sidebar: 'Contact',
+      main: 'Contact'
     }
   ];
 
@@ -70,12 +75,20 @@ export default function Mains() {
               >
                 Products
               </NavLink>
+              <NavLink
+                className="nav-link dark-gray"
+                to="/contact"
+                activeStyle={{ color: "#fff" }}
+              >
+                Contact
+              </NavLink>
             </Nav>
           </Col>
           <Col xs={10} id="page-content-wrapper">
             <Switch>
               <Route path={"/"} exact component={HomeComponent} />
               <Route path={"/products"} component={ProductsComponent} />
+              <Route path={"/contact"} component={ContactPage} />
               <Route path={"*"} component={NotFoundComponent} />
             </Switch>
           </Col>
