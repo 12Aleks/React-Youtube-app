@@ -1,6 +1,8 @@
 import React from "react";
-import Mains from "./Layout/mainLayout";
-
+import {Index} from "./router";
+import Apps from "./ulbi/App";
+// import UseMemoFun from './Primery/useMemo/useMemo'
+// import IndexMain from "./One/Index"
 // const AddTodo = React.lazy(() => import('./Todo/AddTodo'))
 // const styles = {
 //     title: {
@@ -69,7 +71,12 @@ function App() {
       {/*<Index/>*/}
       {/* <IndexComponent /> */}
       {/* <CostomHook /> */}
-      <Mains />
+      {/*<Mains />*/}
+      {/**/}
+      {/*<IndexMain/>*/}
+
+      {/*<Index/>*/}
+      <Apps/>
     </div>
   );
 }

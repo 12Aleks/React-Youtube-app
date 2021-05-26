@@ -12,11 +12,8 @@ function complexCompute(num) {
 
 export default function UseMemoFun() {
     const [number, setNumber] = useState(42);
-    const [colored, setColored] = useState(false)
+    const [colored, setColored] = useState(false);
 
-
-    // const computed = complexCompute(number);
-    //const styles = {color: colored ? 'green': 'black'}
     const computed = useMemo(() => {
         return complexCompute(number);
     }, [number]);
@@ -24,11 +21,11 @@ export default function UseMemoFun() {
     const styles = useMemo(() => ({
         color: colored ? 'green': 'black'
     }), [colored]);
-s
 
-    useEffect(() =>{
-        console.log('Styles')
-    },[styles])
+
+    // useEffect(() =>{
+    //     console.log('Styles')
+    // },[styles])
 
     return(
         <div>
